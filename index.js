@@ -42,20 +42,16 @@ const getColorByResponseSpeed = (ms) => {
     return 'red';
 };
 
-const log = (debug, value, logger) => {
-    if(logger) {
-        logger.apply(value);
-    }
-
-}
-
-export default function (request, logger = null, logName = 'super-log', curlName ='super-curl') {
-    const debugLog = _debug(logName);
-    const debugCurl = _debug(curlName);
+export default function (request, logger = null, options = {
+    logName: 'super-debug',
+    curlName: 'super-curl'
+}) {
+    const debugLog = _debug(options.logName);
+    const debugCurl = _debug(options.curlName);
 
     const requestUrl = constructUrl(request.url, request.qs);
     const curl = mapRequestToCurl(request, requestUrl);
-    debugCurl.apply(chalk.gray(curl));
+    debugCurl.apply(null, [chalk.gray(curl)]);
 
     const start = new Date().getTime();
     const uri = url.parse(request.url);

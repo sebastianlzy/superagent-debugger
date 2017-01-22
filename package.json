@@ -1,5 +1,5 @@
 {
-  "name": "super-log",
+  "name": "superagent-debugger",
   "version": "1.0.0",
   "description": "A simple debugging log for superagent",
   "main": "lib/index.js",
