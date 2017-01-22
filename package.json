@@ -1,6 +1,6 @@
 {
   "name": "superagent-debugger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple debugging log for superagent",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "superagent",
     "curl"
   ],
-  "url" : "https://github.com/sebastianlzy/superagent-debugger",
+  "url": "https://github.com/sebastianlzy/superagent-debugger",
   "author": "sebastian",
   "license": "ISC",
   "devDependencies": {
