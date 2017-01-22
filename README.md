@@ -11,7 +11,6 @@ Logging for [superagent](https://github.com/visionmedia/superagent)
 
 ```cli
 npm install --save superagent-debugger
-
 ```
 
 ### Usage
