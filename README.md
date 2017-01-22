@@ -10,7 +10,7 @@ Logging for [superagent](https://github.com/visionmedia/superagent)
 ### Install
 
 ```cli
-npm install --save super-log
+npm install --save superagent-debugger
 
 ```
 
