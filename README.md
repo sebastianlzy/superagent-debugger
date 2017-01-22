@@ -19,8 +19,11 @@ npm install --save super-log
 ```js
 import superagent from 'superagent';
 import superdebug from 'superagent-debugger';
+import EventEmitter from 'events';
 
+const eventEmitter = new EventEmitter();
 const request = superagent(httpMethod, url);
+
 request.set(headers)
         .query(query)
         .timeout(defaultTimeout)
