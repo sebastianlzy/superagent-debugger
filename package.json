@@ -1,0 +1,21 @@
+{
+  "name": "super-log",
+  "version": "1.0.0",
+  "description": "A simple debugging log for superagent",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel index.js -d lib"
+  },
+  "keywords": [
+    "express",
+    "logging",
+    "debug"
+  ],
+  "author": "sebastian",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-env": "^1.1.8"
+  }
+}
