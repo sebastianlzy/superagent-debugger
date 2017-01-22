@@ -13,6 +13,7 @@
     "superagent",
     "curl"
   ],
+  "url" : "https://github.com/sebastianlzy/superagent-debugger",
   "author": "sebastian",
   "license": "ISC",
   "devDependencies": {
