@@ -46,7 +46,7 @@ HTTP GET 200 http://gateway.me/sebastian (89ms)","timestamp":"2017-01-22T13:44:2
 ### Using Debug
  `DEBUG=super-curl,super-debug npm run server:watch`
  
-![screeshot1](/sample-log.jpg)
+![screeshot1](https://raw.githubusercontent.com/sebastianlzy/superagent-debugger/master/sample-log.jpg)
 
 ### options
 
