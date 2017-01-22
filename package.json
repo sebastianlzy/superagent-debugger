@@ -8,9 +8,10 @@
     "build": "babel index.js -d lib"
   },
   "keywords": [
-    "express",
     "logging",
-    "debug"
+    "debug",
+    "superagent",
+    "curl"
   ],
   "author": "sebastian",
   "license": "ISC",
