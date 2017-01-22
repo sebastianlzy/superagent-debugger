@@ -36,8 +36,8 @@ eventEmitter.on('sendRequest', (request) => {
 
 ### Output Log
 ```log
-curl -v -X GET -H 'User-Agent: node-superagent/3.1.0' -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'X-Shopback-Country: SG' -H 'X-Shopback-Domain: www.shopback.sg' -H 'X-Shopback-Language: en' -H 'X-Shopback-Agent: sbconsumeragent/1.0' -H 'X-Shopback-Internal: 682a46b19b953306c9ee2e8deb0dc210' -H 'X-Request-Id: 5f075904-7c1b-4ad3-ad78-20fdf0a25288' http://gateway.shopback.com/int/accounts/2630533/cashbacks?isValid=1&statuses=Pending%2CRedeemable%2CBonus%2CProcessing%2CPaid","timestamp":"2017-01-22T13:44:23.498Z
-HTTP GET 200 http://gateway.shopback.com/int/accounts/2630533/payment?include=paymentType (89ms)","timestamp":"2017-01-22T13:44:23.585Z
+curl -v -X GET -H 'User-Agent: node-superagent/3.1.0' -H 'Accept: application/json' -H 'Content-Type: application/json' http://gateway.me/sebastian","timestamp":"2017-01-22T13:44:23.498Z
+HTTP GET 200 http://gateway.me/sebastian (89ms)","timestamp":"2017-01-22T13:44:23.585Z
 ```
 
 ### Using Debug
