@@ -1,6 +1,6 @@
 {
   "name": "superagent-debugger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple debugging log for superagent",
   "main": "lib/index.js",
   "scripts": {
