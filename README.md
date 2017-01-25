@@ -56,3 +56,13 @@ const options = {logName: 'logDebug', curlName: 'curlDebug'}
 ```
 DEBUG=logDebug,curlDebug node sdk.js
 ```
+
+### Help
+Refer to the example provided
+
+### Improvement
+
+1. Test/Test coverage report
+3. CI/CD process
+
+Any feedbacks or contributions are welcome!
