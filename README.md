@@ -16,44 +16,43 @@ npm install --save superagent-debugger
 ### Usage
 
 ```js
-import superagent from 'superagent';
-import superdebug from 'superagent-debugger';
-import EventEmitter from 'events';
+let superagent = require('superagent');
+let superdebug = require('../lib/index').default;
 
-const eventEmitter = new EventEmitter();
-const request = superagent(httpMethod, url);
+let request = superagent('GET', 'http://localhost:3000/debug')
 
-request.set(headers)
-        .query(query)
-        .timeout(defaultTimeout)
-        .send(data);
-
-eventEmitter.emit('sendRequest', request);
-
-eventEmitter.on('sendRequest', (request) => {
-    superDebug(request, console.info);
-});
-
+request
+    .set({Accept: 'application/json'})
+    .query({superdebug: 'is-awesome'})
+    .use(superdebug(console.info))
+    .timeout(10000)
+    .send()
+    .end()
 ```
 
 ### Output Log
 ```log
-curl -v -X GET -H 'User-Agent: node-superagent/3.1.0' -H 'Accept: application/json' -H 'Content-Type: application/json' http://gateway.me/sebastian","timestamp":"2017-01-22T13:44:23.498Z
-HTTP GET 200 http://gateway.me/sebastian (89ms)","timestamp":"2017-01-22T13:44:23.585Z
+super-curl curl -v -X GET -H 'User-Agent: node-superagent/3.3.2' -H 'Accept: application/json' http://localhost:3000/debug?superdebug=is-awesome +0ms
+super-debug HTTP GET 200 http://localhost:3000/debug?superdebug=is-awesome (23ms) +25ms
 ```
 
 ### Using Debug
- `DEBUG=super-curl,super-debug npm run server:watch`
- 
+ ```
+ DEBUG=super-debug,super-curl node sdk.js
+ ```
 ![screeshot1](https://raw.githubusercontent.com/sebastianlzy/superagent-debugger/master/sample-log.jpg)
 
 ### options
 
 ```js
- eventEmitter.on('sendRequest', (request) => {
-        superdebug(request, logger.info, {
-            logName: 'SDK',
-            curlName: 'CURL'
-        });
-    });
+const options = {logName: 'logDebug', curlName: 'curlDebug'}
+    
+ request
+     .set({Accept: 'application/json'})
+     .query({superdebug: 'is-awesome'})
+     .use(superdebug(console.info, options))
+```
+
+```
+DEBUG=logDebug,curlDebug node sdk.js
 ```

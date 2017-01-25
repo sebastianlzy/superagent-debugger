@@ -42,36 +42,37 @@ const getColorByResponseSpeed = (ms) => {
     return 'red';
 };
 
-export default function (request, logger = null, options = {
-    logName: 'super-debug',
-    curlName: 'super-curl'
-}) {
-    const debugLog = _debug(options.logName);
-    const debugCurl = _debug(options.curlName);
+const handleResponse = (request, start, logger, debugLog, debugCurl) => (response) => {
+    const now = new Date().getTime();
+    const elapsed = now - start;
+    const elapseTime = elapsed + 'ms';
+
+    const uri = url.parse(request.url);
+    const protocol = uri.protocol.toUpperCase().replace(/[^\w]/g, '');
+    const requestMethod = request.method.toUpperCase();
+    const responseStatus = response.status;
 
     const requestUrl = constructUrl(request.url, request.qs);
     const curl = mapRequestToCurl(request, requestUrl);
+
     debugCurl.apply(null, [chalk.gray(curl)]);
 
+    debugLog.apply(null, [
+        '%s %s %s %s %s',
+        chalk.magenta(protocol),
+        chalk.cyan(requestMethod),
+        chalk[getColorByResponseStatus(responseStatus)](responseStatus),
+        chalk.gray(requestUrl),
+        chalk.gray('(') + chalk[getColorByResponseSpeed(elapsed)](elapseTime) + chalk.gray(')')
+    ])
+    logger(`${protocol} ${requestMethod} ${responseStatus} ${requestUrl} (${elapseTime})`)
+}
+
+export default (logger = null, options = {logName: 'super-debug', curlName: 'super-curl'}) => (request) => {
+    const debugLog = _debug(options.logName);
+    const debugCurl = _debug(options.curlName);
+
     const start = new Date().getTime();
-    const uri = url.parse(request.url);
 
-    request.on('response', function (response) {
-        const now = new Date().getTime();
-        const elapsed = now - start;
-        const protocol = uri.protocol.toUpperCase().replace(/[^\w]/g, '');
-        const requestMethod = request.method.toUpperCase();
-        const responseStatus = response.status;
-        const elapseTime = elapsed + 'ms';
-
-        debugLog.apply(null, [
-            '%s %s %s %s %s',
-            chalk.magenta(protocol),
-            chalk.cyan(requestMethod),
-            chalk[getColorByResponseStatus(responseStatus)](responseStatus),
-            chalk.gray(requestUrl),
-            chalk.gray('(') + chalk[getColorByResponseSpeed(elapsed)](elapseTime) + chalk.gray(')')
-        ])
-        logger(`${protocol} ${requestMethod} ${responseStatus} ${requestUrl} (${elapseTime})`)
-    });
+    request.on('response', handleResponse(request, start, logger, debugLog, debugCurl));
 }
