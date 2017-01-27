@@ -21,8 +21,10 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.1.8",
     "express": "^4.14.0",
+    "mocha": "^3.2.0",
     "superagent": "^3.3.2"
   },
   "dependencies": {

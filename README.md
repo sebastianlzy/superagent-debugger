@@ -17,11 +17,9 @@ npm install --save superagent-debugger
 
 ```js
 let superagent = require('superagent');
-let superdebug = require('../lib/index').default;
+let superdebug = require('superagent-debugger');
 
-let request = superagent('GET', 'http://localhost:3000/debug')
-
-request
+superagent('GET', 'http://localhost:3000/debug')
     .set({Accept: 'application/json'})
     .query({superdebug: 'is-awesome'})
     .use(superdebug(console.info))
@@ -47,7 +45,7 @@ super-debug HTTP GET 200 http://localhost:3000/debug?superdebug=is-awesome (23ms
 ```js
 const options = {logName: 'logDebug', curlName: 'curlDebug'}
     
- request
+ superagent('GET', 'http://localhost:3000/debug')
      .set({Accept: 'application/json'})
      .query({superdebug: 'is-awesome'})
      .use(superdebug(console.info, options))
