@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register *.spec.js",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",
+    "coverage": "nyc report --reporter=text-lcov npm run test | coveralls",
     "build": "babel index.js -d lib"
   },
   "keywords": [
@@ -26,6 +27,7 @@
     "babel-preset-env": "^1.1.8",
     "babel-watch": "^2.0.5",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.15",
     "express": "^4.14.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
