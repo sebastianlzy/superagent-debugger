@@ -1,5 +1,8 @@
 # Simple Log For Super Agent 
 
+[![Build Status](https://travis-ci.org/sebastianlzy/superagent-debugger.svg?branch=master)](https://travis-ci.org/sebastianlzy/superagent-debugger)
+[![Coverage Status](https://coveralls.io/repos/github/sebastianlzy/superagent-debugger/badge.svg)](https://coveralls.io/github/sebastianlzy/superagent-debugger)
+
 ### Introduction
 An easy and fast way to identify and replicate rogue request on the fly 
 
