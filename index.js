@@ -13,16 +13,16 @@ const appendQuery = (qs) => {
     return '';
 };
 
-const constructUrl = (url, qs = {}) => (
+export const constructUrl = (url, qs = {}) => (
     url + appendQuery(qs)
 );
 
-const mapRequestToCurl = (request, requestUrl) => {
+export const mapRequestToCurl = (request, requestUrl) => {
     const headers = reduce(request.header, (headers, value, header) => headers + `-H '${header}: ${value}' `, ' ');
     return `curl -v -X ${request.method}${headers}${requestUrl}`;
 };
 
-const getColorByResponseStatus = (status) => {
+export const getColorByResponseStatus = (status) => {
     if (status < 300) {
         return 'green';
     } else if (status < 400) {
@@ -31,7 +31,7 @@ const getColorByResponseStatus = (status) => {
     return 'red';
 };
 
-const getColorByResponseSpeed = (ms) => {
+export const getColorByResponseTime = (ms) => {
     if (ms < 200) {
         return 'green';
     } else if (ms < 1000) {
@@ -56,6 +56,7 @@ const handleResponse = (request, start, logger, debugLog, debugCurl) => (respons
     const curl = mapRequestToCurl(request, requestUrl);
 
     debugCurl.apply(null, [chalk.gray(curl)]);
+    logger(curl)
 
     debugLog.apply(null, [
         '%s %s %s %s %s',
@@ -63,7 +64,7 @@ const handleResponse = (request, start, logger, debugLog, debugCurl) => (respons
         chalk.cyan(requestMethod),
         chalk[getColorByResponseStatus(responseStatus)](responseStatus),
         chalk.gray(requestUrl),
-        chalk.gray('(') + chalk[getColorByResponseSpeed(elapsed)](elapseTime) + chalk.gray(')')
+        chalk.gray('(') + chalk[getColorByResponseTime(elapsed)](elapseTime) + chalk.gray(')')
     ])
     logger(`${protocol} ${requestMethod} ${responseStatus} ${requestUrl} (${elapseTime})`)
 }
