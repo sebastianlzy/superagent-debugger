@@ -4,9 +4,9 @@
   "description": "A simple debugging log for superagent",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register *.spec.js",
+    "test": "_mocha --compilers js:babel-core/register *.spec.js",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",
-    "coverage": "nyc report --reporter=text-lcov npm run test | coveralls",
+    "coverage": "nyc --reporter=text-lcov npm run test | coveralls",
     "build": "babel index.js -d lib"
   },
   "keywords": [
