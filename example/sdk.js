@@ -1,5 +1,5 @@
 let superagent = require('superagent');
-let superdebug = require('../lib/index');
+let superdebug = require('../index').default;
 
 superagent
     .get('http://localhost:3000/debug')

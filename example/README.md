@@ -6,5 +6,5 @@ node index.js
 Run SDK client
 
 ```js
-DEBUG=super-debug,super-curl node sdk.js
+DEBUG=super-debug,super-curl babel-node sdk.js
 ```
