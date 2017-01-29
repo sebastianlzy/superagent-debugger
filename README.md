@@ -7,7 +7,7 @@
 An easy and fast way to identify and replicate rogue request on the fly 
 
 ### Dependencies
-Logging for [superagent](https://github.com/visionmedia/superagent)
+Logging and debugging for [superagent](https://github.com/visionmedia/superagent)
 
 -----------
 ### Install
@@ -63,7 +63,8 @@ Refer to the example provided
 
 ### Improvement
 
-1. Test/Test coverage report
-3. CI/CD process
+1. [x] Test/Test coverage report
+2. [ ] CI/CD process
+3. [ ] Allow debug for client side request
 
 Any feedbacks or contributions are welcome!
