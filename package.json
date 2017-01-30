@@ -7,7 +7,7 @@
     "test": "_mocha --compilers js:babel-core/register *.spec.js",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",
     "coverage": "nyc --reporter=text-lcov npm run test | coveralls",
-    "build": "babel index.js -d lib"
+    "build": "babel index.js -d lib; rm .gitignore"
   },
   "keywords": [
     "logging",
