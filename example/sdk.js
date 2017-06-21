@@ -16,3 +16,10 @@ superagent
     .use(superdebug(console.info))
     .send()
     .end();
+
+superagent
+    .post('http://localhost:3000/post')
+    .set({Accept: 'application/json'})
+    .use(superdebug(console.info))
+    .send({ name: 'superagent', type: 'debugger' })
+    .end();
